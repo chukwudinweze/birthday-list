@@ -1,9 +1,22 @@
-import React from 'react';
+import React from "react";
 
-const List = () => {
+const List = ({ people }) => {
   return (
     <>
-      <h2>list component</h2>
+      {React.Children.toArray(
+        people.map((person) => {
+          const { name, age, image } = person;
+          return (
+            <article className="person">
+              <img src={image} alt={name} />
+              <div>
+                <h4>{name}</h4>
+                <p>{age}</p>
+              </div>
+            </article>
+          );
+        })
+      )}
     </>
   );
 };
